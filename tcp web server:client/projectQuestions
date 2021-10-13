@@ -1,0 +1,40 @@
+1. You will hand in the complete server code along with the screen shots of your client browser, 
+	verifying that you received the contents of the HTML file from the server.
+
+- Included in project folder.
+
+
+2. A screenshot showing when you request a file that is not available on the server (404 message).
+
+- Included in project folder.
+
+
+3. What is the purpose of the decode and encode functions? Why do we need them here?
+
+- The decode function converts the message to a string, and the encode function converts the message from a string 
+to byte type. This is needed because only byte type can be sent/received in sockets.
+
+
+4. Where do you see this message? print(message.decode()) # print out the request. Include a
+	screenshot and explain the information you see here when you are running and using the
+	program. Read the python documentation on string literals for more information.
+
+- Screenshot included in project folder. This code prints out the request from the client in String format, in the
+terminal. It has converted the message from byte type (from the socket) to a String for the web admin to read.
+
+
+5. What is the purpose of the \r\n, your answer needs to be based on packed header value
+information we discussed?
+
+- The \r\n creates a new line, which is used to separate the packet headers in the terminal, like Host: and User-Agent:.
+
+
+6. Example of a packet capture that shows a client web browser accessing your server and the
+response from your server. Explain your findings based on Chapter 1 and 2.
+
+- See print(message.decode()).png in project folder. The client requests the document HelloWorld.html from the server,
+and we see the GET message of the html file using HTTP1.1 in the server's terminal. 
+Since it is only the text in the HelloWorld.html file, there is only one request needed (unlike images, which each 
+need an individual request). We can also see the User-Agent, the Web Browser, that is requesting the document (
+the Mozilla Firefox on my Kali VM). Further, the packet shows us that the connection is a keep-alive type, so the 
+server is not terminating the connection with our Web Browser after fulfilling the request.
